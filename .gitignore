@@ -1,0 +1,7 @@
+# Include Verdana.ttf only:
+/.browservice/*
+!/.browservice/appimage/
+/.browservice/appimage/*
+!/.browservice/appimage/fonts/
+/.browservice/appimage/fonts/*
+!/.browservice/appimage/fonts/Verdana.ttf
