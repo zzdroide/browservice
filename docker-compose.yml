@@ -1,8 +1,7 @@
-version: "3.8"
 services:
   browservice:
     build: .
-    privileged: yes   # For "Failed to move to new namespace: PID namespaces supported, Network namespace supported, but failed: errno = Operation not permitted"
+    privileged: true  # Failed to move to new namespace: PID namespaces supported, Network namespace supported, but failed: errno = Operation not permitted
     restart: unless-stopped
     ports:
       - 127.0.0.1:8098:8080
