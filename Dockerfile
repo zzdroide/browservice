@@ -37,9 +37,13 @@ RUN \
   chown root:root browservice-root/opt/browservice/chrome-sandbox; \
   chmod 4755 browservice-root/opt/browservice/chrome-sandbox
 
-USER browser
-
-CMD rm -f /home/browser/.browservice/cefdata/SingletonLock; \
-  exec /home/browser/browservice-root/AppRun \
-    --data-dir=/home/browser/.browservice/cefdata \
-    --vice-opt-http-listen-addr=0.0.0.0:8080
+CMD \
+  rm -f /home/browser/.browservice/cefdata/SingletonLock; \
+\
+  wget --no-verbose -O /etc/hosts https://raw.githubusercontent.com/StevenBlack/hosts/master/hosts; \
+\
+  su -c "/home/browser/browservice-root/AppRun \
+      --data-dir=/home/browser/.browservice/cefdata \
+      --vice-opt-http-listen-addr=0.0.0.0:8080" \
+    --shell=/bin/bash \
+    browser
